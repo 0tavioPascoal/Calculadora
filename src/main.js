@@ -1,11 +1,16 @@
 function Calculadora() {
+//Acessar o elemento display
     this.display = document.querySelector('.display');
   
+    
+// Inicializa a calculadora
     this.inicia = () => {
       this.capturaCliques();
       this.capturaEnter();
     };
   
+    
+//Captura o evento da tecla Enter
     this.capturaEnter = () => {
       document.addEventListener('keyup', e => {
         if (e.keyCode === 13) {
@@ -14,6 +19,7 @@ function Calculadora() {
       });
     };
   
+// Captura cliques no botão
     this.capturaCliques = () => {
       document.addEventListener('click', event => {
         const el = event.target;
@@ -24,6 +30,7 @@ function Calculadora() {
       });
     };
   
+//Executa o cálculo
     this.realizaConta = () => {
       try {
         const conta = eval(this.display.value);
@@ -40,12 +47,15 @@ function Calculadora() {
       }
     };
   
+//Adiciona número para exibição
     this.addNumDisplay = el => {
       this.display.value += el.innerText;
       this.display.focus();
     };
   
+//Limpa a exibição
     this.clear = () => this.display.value = '';
+//Exclui o último caractere
     this.del = () => this.display.value = this.display.value.slice(0, -1);
   }
   
